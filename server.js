@@ -15,11 +15,23 @@ const feIo = new Server(FRONTEND_PORT, { cors: { origin: "http://localhost:3000"
 feIo.on("connection", (socket) => {
     console.log("React UI connected.");
     feSocket = socket;
+
     socket.on("connect-to-peer", (peerAddress) => {
         console.log(`Connecting to peer at ${peerAddress}:${PEER_PORT}`);
         peerSocket = Client(`http://${peerAddress}:${PEER_PORT}`);
+
+        // --- THIS IS THE FIX ---
+        // When this client successfully connects to the other peer,
+        // send the "Peer connected" status to our own UI.
+        peerSocket.on("connect", () => {
+            console.log("Successfully connected to peer as a client.");
+            if(feSocket) feSocket.emit("status-update", "Peer connected.");
+        });
+        // --- END OF FIX ---
+
         setupPeerListeners();
     });
+    
     socket.on("send-message", (message) => {
         if (!peerSocket) return;
         const type = isSecure ? "secure_msg" : "plaintext_msg";
