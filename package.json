@@ -1,0 +1,13 @@
+{
+  "name": "secure-chat-backend-final",
+  "version": "1.0.0",
+  "description": "Final Backend for Secure Chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5"
+  }
+}
