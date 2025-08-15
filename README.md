@@ -26,19 +26,19 @@ Before running the application, ensure you have the following installed on **bot
 To deploy and test the application, you will need two computers connected to the same local network.
 
 1.  **Installation:**
-    * Copy the `chat-backend-final` and `chat-frontend` folders to both computers.
+    * Copy the `exchange-key-backend` and `key-exchange-frontend` folders to both computers.
     * On both machines, open a terminal and run `npm install` inside both the `backend` and `frontend` directories to download the necessary dependencies.
 
 2.  **Execution (Computer A - The "Listener"):**
     * Find its local IP address (e.g., using `ipconfig` on Windows or `ip addr` on macOS/Linux).
     * In one terminal, start the back-end server:
         ```bash
-        cd chat-backend-final
+        cd exchange-key-backend
         npm start
         ```
     * In a second terminal, start the front-end UI:
         ```bash
-        cd chat-frontend
+        cd key-exchange-frontend
         npm start
         ```
 
